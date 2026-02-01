@@ -1,0 +1,98 @@
+:root {
+            --primary-color: #3b82f6; /* Bleu Tech */
+            --accent-color: #8b5cf6;  /* Violet IA/Deep Learning */
+            --bg-dark: #0f172a;
+            --text-gray: #94a3b8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Effet "Code" pour les petits textes techniques */
+        .tech-font {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        /* La touche "Poète" */
+        .poet-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.1), transparent 40%);
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: -webkit-linear-gradient(45deg, #fff, var(--text-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        /* --- PROJETS (Case Studies) --- */
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .badge-tech {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- SECTION POÈTE / FORMATEUR --- */
+        .soft-skills-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1e293b 100%);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Bouton Custom */
+        .btn-glow {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Ajustements */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .hero-section { text-align: center; }
+            .hero-img { display: none; } /* On cache l'image de profil sur mobile pour simplifier */
+        }

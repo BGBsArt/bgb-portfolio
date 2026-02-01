@@ -1,0 +1,114 @@
+---
+const { project } = Astro.props;
+---
+
+<div class="project-card p-4 p-md-5 mb-5">
+    <div class="row align-items-center">
+        <!-- Contenu Texte -->
+        <div class="col-lg-6">
+            <div class={`tech-font mb-2 ${project.taglineClass}`}>
+                ★ {project.tagline}
+            </div>
+            <h3 class="fw-bold mb-3">{project.title}</h3>
+            <p class="text-gray">{project.description}</p>
+            
+            <div class="mb-4">
+                {project.technologies.map((tech) => (
+                    <span class="badge-tech me-2 mb-2 d-inline-block">{tech}</span>
+                ))}
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+                {project.hasPdf && (
+                    <a href={project.pdfLink} target="_blank" class="btn btn-sm btn-outline-light">
+                        <i class="fas fa-file-pdf"></i> Voir Présentation PDF
+                    </a>
+                )}
+                {!project.hasPdf && project.link !== "#" && (
+                    <a href={project.link} class="text-white text-decoration-none border-bottom border-primary">
+                        Voir le code / Démo <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                )}
+            </div>
+        </div>
+
+        <!-- Image / Visuel -->
+        <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="bg-dark rounded-3 d-flex align-items-center justify-content-center overflow-hidden border border-secondary" style="height: 250px;">
+                <img src={project.image} alt={project.title} class="img-fluid" style="object-fit: cover; height: 100%; width: 100%; opacity: 0.8;" onerror="this.style.display='none'"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZONE ARCHITECTURE (S'affiche seulement si 'architecture' existe dans les données) -->
+    {project.architecture && (
+        <div class="row mt-4">
+            <div class="col-12">
+                <details class="architecture-details">
+                    <summary class="btn btn-dark btn-sm w-100 text-start py-2 px-3 d-flex justify-content-between align-items-center border border-secondary">
+                        <span class="tech-font"><i class="fas fa-microchip me-2"></i> Voir l'Architecture Pipeline (V2)</span>
+                        <i class="fas fa-chevron-down small"></i>
+                    </summary>
+                    
+                    <!-- Le Terminal -->
+                    <div class="terminal-window mt-3">
+                        <div class="terminal-header d-flex gap-2 p-2 bg-secondary bg-opacity-25 rounded-top">
+                            <div class="rounded-circle bg-danger" style="width:10px;height:10px;"></div>
+                            <div class="rounded-circle bg-warning" style="width:10px;height:10px;"></div>
+                            <div class="rounded-circle bg-success" style="width:10px;height:10px;"></div>
+                            <span class="ms-2 text-muted small tech-font">pipeline_architecture.txt</span>
+                        </div>
+                        <pre class="terminal-content p-3 m-0 text-success fw-bold">{project.architecture}</pre>
+                    </div>
+                </details>
+            </div>
+        </div>
+    )}
+</div>
+
+<style>
+    /* Style du menu déroulant */
+    details > summary {
+        list-style: none;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    details[open] > summary {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+        border-color: var(--primary-color) !important;
+        color: var(--primary-color);
+    }
+    details[open] > summary i.fa-chevron-down {
+        transform: rotate(180deg);
+    }
+
+    /* Style du Terminal */
+    .terminal-window {
+        background-color: #0d1117; /* Noir Github */
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .terminal-content {
+        font-family: 'JetBrains Mono', monospace; /* Police monospace obligatoire */
+        font-size: 0.75rem; /* Petit pour que ça rentre */
+        line-height: 1.2;
+        overflow-x: auto; /* SCROLL HORIZONTAL IMPORTANT SUR MOBILE */
+        white-space: pre; /* Garde les espaces exacts */
+        scrollbar-width: thin;
+        scrollbar-color: #30363d #0d1117;
+    }
+    
+    /* Scrollbar custom pour le terminal */
+    .terminal-content::-webkit-scrollbar {
+        height: 8px;
+    }
+    .terminal-content::-webkit-scrollbar-track {
+        background: #0d1117;
+    }
+    .terminal-content::-webkit-scrollbar-thumb {
+        background-color: #30363d;
+        border-radius: 4px;
+    }
+</style>

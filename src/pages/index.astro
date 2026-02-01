@@ -1,17 +1,42 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
+// Import des données
+import { projects } from '../data/projects.js';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="BGB | Ingénieur Fullstack & IA">
+    
+    <Navbar />
+    
+    <Hero />
+
+    <!-- Section Projets (Loop) -->
+    <section id="projets" class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold display-5">Projets Signatures</h2>
+                    <p class="tech-font">Sélection de projets conçus et développés de A à Z.</p>
+                </div>
+            </div>
+
+            <!-- On boucle sur les données -->
+            {projects.map((project) => (
+                <ProjectCard project={project} />
+            ))}
+            
+        </div>
+    </section>
+
+    <Skills />
+
+
+    <Footer />
+
+</MainLayout>

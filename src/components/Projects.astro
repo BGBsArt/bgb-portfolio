@@ -1,0 +1,55 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects.js';
+---
+
+<section id="projets" class="projects-section section-padding">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Projets <span class="text-gradient">Majeurs</span></h2>
+            <p class="section-subtitle">Des solutions complètes, conçues et développées en totale autonomie</p>
+        </div>
+        
+        <div class="row g-4 mt-5">
+            {projects.map((project, index) => (
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay={100 * (index + 1)}>
+                    <ProjectCard project={project} />
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects-section {
+        background-color: #0f172a;
+    }
+
+    .section-header {
+        margin-bottom: 30px;
+    }
+
+    .section-tag {
+        display: inline-block;
+        background: rgba(99, 102, 241, 0.15);
+        color: #a5b4fc;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #f8fafc;
+    }
+
+    .section-subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+    }
+</style>
