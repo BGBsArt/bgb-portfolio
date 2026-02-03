@@ -3,8 +3,8 @@ export const projects = [
         title: "Doublage Vidéo Automatique (Français → Yoruba)",
         tagline: "RECHERCHE & IA & ML OPS",
         taglineClass: "text-warning",
-        description: "Pipeline Deep Learning complet : Extraction, ASR (Whisper), Traduction NLLB, Validation Humaine (Interface Django) et Lip-Sync (Wav2Lip).",
-        technologies: ["Python", "PyTorch", "Django (HITL)", "Wav2Lip", "FFmpeg"],
+        description: "Pipeline Deep Learning complet : Extraction, ASR (Whisper), Traduction NLLB, Validation Humaine (Interface Web) et Lip-Sync (Wav2Lip).",
+        technologies: ["Python", "PyTorch", "Wav2Lip", "FFmpeg"],
         image: "/images/projects/doublage-ia.png", 
         link: "#",
         hasPdf: false,
@@ -23,7 +23,7 @@ export const projects = [
 │     ┌─────────────────────────────────────────────────────────────────┐     │
 │     │  MODULE 1 : EXTRACTION (FFmpeg)                                 │     │
 │     │  Audio (WAV)  +  Frames Visage  +  Vidéo sans son               │     │
-│     └───────────┼────────────────────┼────────────────────┼──────────┘     │
+│     └───────────┼────────────────────┼────────────────────┼──────────┘      │
 │                 │                    │                    │                 │
 │                 ▼                    │                    │                 │
 │     ┌─────────────────────────────┐  │                    │                 │
@@ -37,7 +37,7 @@ export const projects = [
 │     └──────────────┬──────────────┘  │                    │                 │
 │                    ▼                 │                    │                 │
 │     ┌─────────────────────────────────────────────────────┐                 │
-│     │  🔴 MODULE HITL : VALIDATION HUMAINE (Django)      │                 │
+│     │  MODULE HITL : VALIDATION HUMAINE                   │                 │
 │     │  Interface Web pour correction manuelle FR->Yoruba  │                 │
 │     └──────────────┬──────────────────────────────────────┘                 │
 │                    ▼                                                        │
